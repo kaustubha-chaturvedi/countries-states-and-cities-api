@@ -1,4 +1,4 @@
-module github.com/kausubha-chaturvedi/Apis-You-Crave
+module github.com/kaustubha-chaturvedi/countries-states-and-cities-api
 
 go 1.22.1
 
