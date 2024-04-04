@@ -5,3 +5,4 @@ __pycache__
 mysql_data
 logfile.log
 .env
+testinenv

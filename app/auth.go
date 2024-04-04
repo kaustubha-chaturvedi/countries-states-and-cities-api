@@ -12,10 +12,13 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
-
-	var user User
-	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
-		http.Error(w, "Invalid request body", http.StatusBadRequest)
+	email := r.FormValue("email")
+	password := r.FormValue("password")
+	name := r.FormValue("name")
+	user := User{Name: name, Email: email, Password: password}
+	
+	if user.Name == "" || user.Email == "" || user.Password == "" {
+		http.Error(w, "Name, email and password are required", http.StatusBadRequest)
 		return
 	}
 
