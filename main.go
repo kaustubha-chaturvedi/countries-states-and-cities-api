@@ -18,6 +18,10 @@ var (
 	dbPort     = app.Env("DB_PORT", "3306")
 )
 
+func index(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "Welcome to the Countries, States, and Cities API")
+}
+
 func main() {
 	var err error
 	app.DB, err = sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPassword, dbHost, dbPort, dbName))
@@ -27,7 +31,7 @@ func main() {
 	defer app.DB.Close()
 
 	mux := http.NewServeMux()
-
+	mux.HandleFunc("GET /", index)
 	mux.HandleFunc("POST /api/signup", app.Signup)
 	mux.HandleFunc("POST /api/login", app.Login)
 	mux.HandleFunc("GET /api/locations", app.ListCountries)

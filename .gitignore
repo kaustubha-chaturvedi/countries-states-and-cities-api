@@ -3,3 +3,5 @@ __pycache__
 *.yml
 *.csv
 mysql_data
+logfile.log
+.env
